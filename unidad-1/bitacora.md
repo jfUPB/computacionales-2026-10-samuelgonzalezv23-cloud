@@ -5,24 +5,17 @@
 ### Actividad 1
 
 El código modifica los registros de la cpu unas veces y luego escribe un valor en la address 16 de la ram, finalmente termina su ejecución creando un loop indefinido de acciones que no hacen nada.
-
+```
 @1
-
 D=A
-
 @2
-
 D=D+A
-
 @16
-
 M=D
-
 @END
-
 (END)
 0;JMP
-
+```
 Las instrucciones realizan lo siguiente:
 
 @1 puede modificar el valor del registro A, el registro A corresponde a la address en la ram a la que se va a escribir, en este caso el 1
@@ -40,30 +33,25 @@ M=D Escribimos el valor de D en la memoria, la address que se está escribiendo 
 @END Esto hace que el valor del registro A corresonda al número de línea de la línea de código apodadada (END) una vez el código sea traducido por la máquina
 
 (END)
-0;JMP   Esta es la línea de código apodada (END), en el código original, es la línea número 7, por lo que cuando vemos las instrucciones traducidas por la máquina, la línea anterior convierte el valor del registro A en 7. Esta línea de código tiene 2 partes, separadas por punto y coma; la primera es una operación nula y la segunda es JMP o Jump, que hace que el contador de posición salte a la posición igual al valor del registro A, que es 7, lo que causa que esta linea de código se repita en bucle de forma indefinida y termine la ejecución del programa.
+0;JMP   Esta es la línea de código apodada (END), en el código original, es la línea número 7, por lo que cuando vemos las instrucciones traducidas por la máquina, la línea anterior convierte el valor del registro A en 7. Esta línea de código tiene 2 partes, separadas por punto y coma; la primera es una operación nula y la segunda es JMP o Jump, que hace que el program counter salte a la posición igual al valor del registro A, que es 7, lo que causa que esta linea de código se repita en bucle de forma indefinida y termine la ejecución del programa.
 
 ### Actividad 2
+```
 @5
-
 D=A
-
 @10
-
 D=D+A
-
 @20
-
 M=D
-
 @END
-
 (END)
 0;JMP
-
+```
 ## Bitácora de aplicación 
 
 
 
 ## Bitácora de reflexión
+
 
 
