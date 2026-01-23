@@ -7,12 +7,19 @@
 El código modifica los registros de la cpu unas veces y luego escribe un valor en la address 16 de la ram, finalmente termina su ejecución creando un loop indefinido de acciones que no hacen nada.
 
 @1
+
 D=A
+
 @2
+
 D=D+A
+
 @16
+
 M=D
+
 @END
+
 (END)
 0;JMP
 
@@ -37,12 +44,19 @@ M=D Escribimos el valor de D en la memoria, la address que se está escribiendo 
 
 ### Actividad 2
 @5
+
 D=A
+
 @10
+
 D=D+A
+
 @20
+
 M=D
+
 @END
+
 (END)
 0;JMP
 
@@ -51,4 +65,5 @@ M=D
 
 
 ## Bitácora de reflexión
+
 
