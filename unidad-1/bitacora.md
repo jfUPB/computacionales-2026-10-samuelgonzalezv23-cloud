@@ -47,6 +47,46 @@ M=D
 (END)
 0;JMP
 ```
+### Actividad 3
+No sé que pasa debo preguntar por qué no funciona
+```
+@11
+D=A
+@5
+M=D
+
+@10
+D=A
+@valor_comparable
+M=D
+
+@valor_comparable
+D=M
+@5
+D=D-M
+
+@MENOR
+D;JLE
+
+(MAYOR)
+
+@1
+D=A
+@7
+M=D
+
+@END
+0;JMP
+
+(MENOR)
+
+@0
+D=A
+@7
+M=D
+
+(END)
+```
 ## Bitácora de aplicación 
 
 ### Actividad 4
@@ -97,6 +137,7 @@ M=D
 ```
 
 ## Bitácora de reflexión
+
 
 
 
