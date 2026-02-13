@@ -223,6 +223,8 @@ M=D
 0;JMP
 
 ```
+<img width="1037" height="607" alt="image" src="https://github.com/user-attachments/assets/b983e3b9-d28a-4b1f-9f5f-c3e5fc4378e7" />
+Creamos variables a y b y creamos dos punteros pa y pb que apuntan hacia ellas
 
 ```
 (start)
@@ -334,6 +336,7 @@ D;JNE
 ```
 
 ## Bitácora de reflexión
+
 
 
 
