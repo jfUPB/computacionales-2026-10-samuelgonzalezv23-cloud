@@ -350,8 +350,19 @@ D;JNE
 
 
 ```
+Se crea un arreglo en las direcciones R1, R2, R3, R4, R5 con los valores 10, 15, 2, 3 y 50 respectivamente
+
+<img width="587" height="671" alt="image" src="https://github.com/user-attachments/assets/b09b5c3f-12c3-49cb-8d2c-4efbeec0e347" />
+
+Se crea una variable puntero "parr" en @16 que apunta al inicio del array, en este caso el array comienza en 0 por lo que se guarda un 0 en memoria
+También se crea una variable "arrsize" en @17 que guarda la longitud del array, en este caso, 5
+
+<img width="570" height="553" alt="image" src="https://github.com/user-attachments/assets/f4d2d673-ae5a-4259-9603-1e5254fb9b7e" />
+
+
 
 ## Bitácora de reflexión
+
 
 
 
