@@ -351,7 +351,7 @@ D;JNE
 
 
 ```
-####punto 2
+#### punto 2
 
 Se crea un arreglo en las direcciones R1, R2, R3, R4, R5 con los valores 10, 15, 2, 3 y 50 respectivamente
 
@@ -383,6 +383,7 @@ El código termina su ejecución
 
 
 ## Bitácora de reflexión
+
 
 
 
