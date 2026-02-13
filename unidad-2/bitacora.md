@@ -153,6 +153,7 @@ M=20
 ```
 ## Bitácora de aplicación 
 ### Actividad 8
+#### punto 1
 ```
 
 (start)
@@ -350,6 +351,8 @@ D;JNE
 
 
 ```
+####punto 2
+
 Se crea un arreglo en las direcciones R1, R2, R3, R4, R5 con los valores 10, 15, 2, 3 y 50 respectivamente
 
 <img width="587" height="671" alt="image" src="https://github.com/user-attachments/assets/b09b5c3f-12c3-49cb-8d2c-4efbeec0e347" />
@@ -362,6 +365,7 @@ También se crea una variable "arrsize" en @17 que guarda la longitud del array,
 
 
 ## Bitácora de reflexión
+
 
 
 
