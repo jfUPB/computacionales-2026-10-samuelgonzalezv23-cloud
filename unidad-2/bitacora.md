@@ -223,8 +223,20 @@ M=D
 0;JMP
 
 ```
+Se inicializan variables a y b en @16 y @17 junto con dos punteros pa y pb en @18 y @19 que apuntan hacia ellas
 <img width="1037" height="607" alt="image" src="https://github.com/user-attachments/assets/b983e3b9-d28a-4b1f-9f5f-c3e5fc4378e7" />
-Creamos variables a y b y creamos dos punteros pa y pb que apuntan hacia ellas
+
+tras saltar a la función swap, se inicializa una variable tmp en @20 que guardará el valor de a
+<img width="558" height="510" alt="image" src="https://github.com/user-attachments/assets/65a937c4-34eb-4068-ae5a-d2c5922c72ca" />
+
+El valor de b se guarda en a
+<img width="565" height="638" alt="image" src="https://github.com/user-attachments/assets/7a688400-3869-4442-a74b-849de35f3ce7" />
+
+El valor original de a, que guardamos en tmp, se guarda en b. efectivamente haciendo "swap" entre a y b
+<img width="562" height="636" alt="image" src="https://github.com/user-attachments/assets/c8570b0a-27a8-4244-984c-26efc3c7c824" />
+
+
+
 
 ```
 (start)
@@ -336,6 +348,7 @@ D;JNE
 ```
 
 ## Bitácora de reflexión
+
 
 
 
