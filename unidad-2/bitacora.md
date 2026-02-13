@@ -362,9 +362,28 @@ También se crea una variable "arrsize" en @17 que guarda la longitud del array,
 
 <img width="570" height="553" alt="image" src="https://github.com/user-attachments/assets/f4d2d673-ae5a-4259-9603-1e5254fb9b7e" />
 
+Se inicializa una variable sum en @18, que representa el valor acumulado que vamos a sumar
+Se inicializa una variable i en @19, que representa cuantas veces se ha realizado la suma acumulada
+Ambas de estas variables comienzan en 0, pero luego del primer ciclo se puede ver que se suma correctamente el primer término (10) a sum y el valor de i incrementa en 1
+
+<img width="562" height="606" alt="image" src="https://github.com/user-attachments/assets/d73e2d92-d94b-4c00-b0aa-c279ba1dc7fe" />
+
+Se puede ver como tras el segundo ciclo, se suma correctamente el segundo valor del array (15) a lo que teníamos (10) con resultado 25 y que el valor de i volvió a incrementar en 1
+
+<img width="581" height="607" alt="image" src="https://github.com/user-attachments/assets/c526b328-efd1-4e41-b5d3-d941006a0847" />
+
+Una vez terminados los ciclos, vemos como la suma es el resultado correcto de los numeros del array 10+15+2+3+50= 80
+y que i tiene un valor de 5, igual al valor que se colocó como el tamaño del array y por tanto, como límite
+El código termina su ejecución
+
+<img width="556" height="92" alt="image" src="https://github.com/user-attachments/assets/d9276469-c6af-48e3-93d3-af8ba28db555" />
+
+
+
 
 
 ## Bitácora de reflexión
+
 
 
 
