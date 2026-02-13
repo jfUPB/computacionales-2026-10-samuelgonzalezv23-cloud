@@ -225,38 +225,115 @@ M=D
 ```
 
 ```
+(start)
+
+//inicializar array
+
 // arr[0] = 10
 @10
 D=A
-@16
+@R0
 M=D
 
 // arr[1] = 15
 @15
 D=A
-@17
+@R1
 M=D
 
 // arr[2] = 2
 @2
 D=A
-@18
+@R2
 M=D
 
 // arr[3] = 3
 @3
 D=A
-@19
+@R3
 M=D
 
 // arr[4] = 50
 @50
 D=A
-@20
+@R4
 M=D
+
+//inicializar variables
+
+//int* parr
+@R0
+D=A
+@parr
+M=D
+
+//int arrSize
+@5
+D=A
+@arrsize
+M=D
+
+(main)
+
+//llamar función
+@calsum
+0;JMP
+
+@end
+(end)
+0;JMP
+
+//función calsum
+(calsum)
+
+// int sum = 0
+@0
+D=A
+@sum
+M=D
+
+//int i= 0
+@0
+D=A
+@i
+M=D
+
+(calsumloop)
+
+//*(parr+i)
+@i
+D=M
+@parr
+A=D+M
+D=M
+
+//sum = sum + *(parr+i)
+@sum
+M=D+M
+
+//i++
+@1
+D=A
+@i
+M=D+M
+
+//For i < arrSize
+@arrsize
+D=M
+@i
+D=D-M
+@calsumloop
+D;JNE
+
+
+@end
+0;JMP
+
+
 
 ```
 
 ## Bitácora de reflexión
+
 
 
