@@ -154,57 +154,73 @@ M=20
 ## Bitácora de aplicación 
 ### Actividad 8
 ```
-// -------------------------
-// Inicializar variables
-// -------------------------
-@10
-D=A
-@0
-M=D       // a = 10
 
+(start)
+
+
+//asignar a
 @20
 D=A
-@1
-M=D       // b = 20
+@a
+M=D
 
-// -------------------------
-// Inicializar punteros
-// -------------------------
-@0
+//asignar b
+@10
 D=A
-@R2
-M=D       // pa = &a
+@b
+M=D
 
-@1
+//crear un puntero a a
+@a
 D=A
-@R3
-M=D       // pb = &b
+@pa
+M=D
 
-// -------------------------
-// swap(*pa, *pb)
-// -------------------------
+//crear un puntero a b
+@b
+D=A
+@pb
+M=D
 
-// tmp = *pa
-@R2
+//llamar la función swap
+@swap
+0;JMP
+
+//fin del código
+@end
+(end)
+0;JMP
+
+//función swap
+(swap)
+
+//tmp = *pa
+@pa
 A=M
 D=M
-@R4
-M=D       // tmp = *pa
+@tmp
+M=D
 
 // *pa = *pb
-@R3
-A=M
-D=M       // D = *pb
-@R2
-A=M
-M=D       // *pa = *pb
 
-// *pb = tmp
-@R4
-D=M       // D = tmp
-@R3
+@pb
 A=M
-M=D       // *pb = tmp
+D=M
+@pa
+A=M
+M=D
+
+//*pb = tmp
+
+@tmp
+A=M
+D=M
+@pb
+A=M
+M=D
+
+
+0;JMP
 
 ```
 
@@ -242,4 +258,5 @@ M=D
 ```
 
 ## Bitácora de reflexión
+
 
