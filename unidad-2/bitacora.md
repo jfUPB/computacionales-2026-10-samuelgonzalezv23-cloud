@@ -384,8 +384,216 @@ El código termina su ejecución
 
 ## Bitácora de reflexión
 
+????
+```
+// =====================================================
+// PROGRAMA: Dibujar y borrar con teclas 'd' y 'e'
+// 'd' (100) -> dibuja
+// 'e' (101) -> borra
+// =====================================================
 
 
+// =======================
+// MAIN LOOP
+// =======================
+
+(LOOP)
+    @KBD
+    D=M
+    @LOOP
+    D;JEQ            // si no hay tecla, seguir esperando
+
+    // -------- comparar con 'd' (100)
+    @100
+    D=D-A
+    @CALL_DRAW
+    D;JEQ
+
+    // -------- volver a cargar tecla
+    @KBD
+    D=M
+    @101
+    D=D-A
+    @CALL_ERASE
+    D;JEQ
+
+    @WAIT_RELEASE
+    0;JMP
+
+
+
+// =======================
+// LLAMADA A DRAW
+// =======================
+
+(CALL_DRAW)
+    @RETURN_FROM_DRAW
+    D=A
+    @R15
+    M=D              // guardar dirección retorno
+    @DRAW
+    0;JMP
+
+(RETURN_FROM_DRAW)
+    @WAIT_RELEASE
+    0;JMP
+
+
+
+// =======================
+// LLAMADA A ERASE
+// =======================
+
+(CALL_ERASE)
+    @RETURN_FROM_ERASE
+    D=A
+    @R15
+    M=D
+    @ERASE
+    0;JMP
+
+(RETURN_FROM_ERASE)
+    @WAIT_RELEASE
+    0;JMP
+
+
+
+// =======================
+// ESPERAR LIBERACIÓN TECLA
+// =======================
+
+(WAIT_RELEASE)
+    @KBD
+    D=M
+    @WAIT_RELEASE
+    D;JNE
+    @LOOP
+    0;JMP
+
+
+
+// =======================
+// FUNCIÓN DRAW
+// Dibuja 32 palabras desde SCREEN
+// =======================
+
+// =======================
+// FUNCIÓN ERASE
+// =======================
+
+(ERASE)
+    @SCREEN
+    D=A
+    @R0
+    M=D
+
+    @32
+    D=A
+    @R1
+    M=D
+
+(ERASE_LOOP)
+    @R0
+    A=M
+    M=0              // apagar píxeles
+
+    @R0
+    M=M+1
+
+    @R1
+    M=M-1
+    D=M
+    @ERASE_LOOP
+    D;JGT
+
+    // return
+    @R15
+    A=M
+    0;JMP
+
+
+
+(DRAW)
+	// put bitmap location value in R12
+	// put code return address in R13
+	@SCREEN
+	D=A
+	@R12
+	AD=D+M
+	// row 12
+	@252 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 13
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@258 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 14
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@513 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 15
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@717 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 16
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@717 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 17
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@513 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 18
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@258 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 19
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@330 // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// row 20
+	D=A // D holds previous addr
+	@32
+	AD=D+A
+	@252    // A holds val
+	D=D+A // D = addr + val
+	A=D-A // A=addr + val - val = addr
+	M=D-A // RAM[addr] = val
+	// return
+	@R13
+	A=M
+	D;JMP
+```
 
 
 
