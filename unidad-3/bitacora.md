@@ -25,6 +25,13 @@ El segundo problema es que la copia
 ```
 Personaje copiaHeroe = heroe;
 ```
-Es una copia superficial que no crea un array con valores nuevos
+Es una copia superficial que no crea un array con valores nuevos.
+
+esto se puede ver al editar las estadisticas de la copia, también modifica las estadísticas del original:
+<img width="646" height="208" alt="image" src="https://github.com/user-attachments/assets/76701900-92af-400b-b8df-d8c506a6c392" />
+<img width="567" height="72" alt="image" src="https://github.com/user-attachments/assets/8f4185e2-15cc-434e-b616-7b8f49e4115c" />
+
+
 
 ## Bitácora de reflexión
+
