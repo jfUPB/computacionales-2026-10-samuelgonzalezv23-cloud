@@ -38,17 +38,100 @@ esto se puede ver al editar las estadisticas de la copia, también modifica las 
 
 esto lo soluciono creando un constructor de copias con estadísticas nuevas
 <img width="577" height="300" alt="image" src="https://github.com/user-attachments/assets/e81854f9-58a2-424e-8e7f-be41231572bb" />
+
 ahora simular encuentro se ve así
+
 <img width="707" height="410" alt="image" src="https://github.com/user-attachments/assets/aa045741-5c79-423c-85ea-4f45ef52cb1f" />
+
 Y ahora el original y la copia pueden tener estadísticas distintas
+
 <img width="736" height="216" alt="image" src="https://github.com/user-attachments/assets/84f1baee-2a84-46e1-ad01-1761e9b47112" />
 
+```
+#include <iostream>
+#include <string>
+
+class Personaje {
+public:
+    std::string nombre;
+    int* estadisticas;
+
+    Personaje(std::string n, int vida, int ataque, int defensa) {
+        nombre = n;
+        estadisticas = new int[3];
+        estadisticas[0] = vida;
+        estadisticas[1] = ataque;
+        estadisticas[2] = defensa;
+        std::cout << "Constructor: nace " << nombre << std::endl;
+    }
+
+    Personaje crearCopia() const {
+
+        Personaje copia(nombre,
+            estadisticas[0],
+            estadisticas[1],
+            estadisticas[2]);
+
+        copia.nombre = "Copia de " + nombre;
+
+        std::cout << "Se creó una copia de "
+            << nombre << std::endl;
+
+        return copia;  
+    }
+
+        ~Personaje() {
+            delete[] estadisticas;
+            std::cout << "Destructor: muere " << nombre << std::endl;
+        }
+
+        void imprimir() {
+            std::cout << "Personaje " << nombre
+                << " [Vida: " << estadisticas[0]
+                << ", ATK: " << estadisticas[1]
+                << ", DEF: " << estadisticas[2]
+                << "]" << std::endl;
+        }
+    };
+
+    void simularEncuentro() {
+        std::cout << "\n--- Iniciando encuentro ---" << std::endl;
+        Personaje heroe("Aragorn", 100, 20, 15);
+
+        
+
+        
+
+        Personaje copia = heroe.crearCopia();
+
+        copia.estadisticas[0] = 90;
+
+        heroe.imprimir();
+        copia.imprimir();
+
+
+
+        std::cout << "Saliendo del encuentro..." << std::endl;
+    }
+
+    int main() {
+
+
+        simularEncuentro();
 
 
 
 
+
+        std::cout << "\nSimulación terminada." << std::endl;
+        return 0;
+    }
+
+
+```
 
 ## Bitácora de reflexión
+
 
 
 
