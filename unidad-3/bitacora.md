@@ -18,6 +18,11 @@ Se puede ver como el uso de memoria crece constantemente sin bajar.
 
 <img width="1036" height="876" alt="image" src="https://github.com/user-attachments/assets/24c3259d-d5ad-42db-9f04-b59dbabe678a" />
 
+esto se soluciona creando un método destructor, en c++ nombrado igual que la clase pero con ~ al principio. este se ejecuta automáticamente cuando el objeto salga del scope y liberará el espacio del heap.
+<img width="642" height="401" alt="image" src="https://github.com/user-attachments/assets/c9b804ae-7c40-4faa-a096-228ac3806558" />
+
+la memoria se mantiene constante.
+
 
 
 
@@ -34,4 +39,5 @@ esto se puede ver al editar las estadisticas de la copia, también modifica las 
 
 
 ## Bitácora de reflexión
+
 
