@@ -36,8 +36,19 @@ esto se puede ver al editar las estadisticas de la copia, también modifica las 
 <img width="646" height="208" alt="image" src="https://github.com/user-attachments/assets/76701900-92af-400b-b8df-d8c506a6c392" />
 <img width="567" height="72" alt="image" src="https://github.com/user-attachments/assets/8f4185e2-15cc-434e-b616-7b8f49e4115c" />
 
+esto lo soluciono creando un constructor de copias con estadísticas nuevas
+<img width="577" height="300" alt="image" src="https://github.com/user-attachments/assets/e81854f9-58a2-424e-8e7f-be41231572bb" />
+ahora simular encuentro se ve así
+<img width="707" height="410" alt="image" src="https://github.com/user-attachments/assets/aa045741-5c79-423c-85ea-4f45ef52cb1f" />
+Y ahora el original y la copia pueden tener estadísticas distintas
+<img width="736" height="216" alt="image" src="https://github.com/user-attachments/assets/84f1baee-2a84-46e1-ad01-1761e9b47112" />
+
+
+
+
 
 
 ## Bitácora de reflexión
+
 
 
