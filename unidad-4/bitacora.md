@@ -193,6 +193,15 @@ void ofApp::keyPressed(int key) {
 
 ```
 
+<img width="619" height="313" alt="image" src="https://github.com/user-attachments/assets/2ae8febd-1222-4d5d-b844-5e8f64e0bd86" />
+<img width="943" height="219" alt="image" src="https://github.com/user-attachments/assets/85c847e4-2b4e-4380-b1b3-9c90b13bff68" />
+
+
+
+
+
+
 
 
 ## Bitácora de reflexión
+
