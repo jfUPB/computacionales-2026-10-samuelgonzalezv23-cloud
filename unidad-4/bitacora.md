@@ -193,8 +193,63 @@ void ofApp::keyPressed(int key) {
 
 ```
 
-<img width="619" height="313" alt="image" src="https://github.com/user-attachments/assets/2ae8febd-1222-4d5d-b844-5e8f64e0bd86" />
-<img width="943" height="219" alt="image" src="https://github.com/user-attachments/assets/85c847e4-2b4e-4380-b1b3-9c90b13bff68" />
+Evidencia 1: Nodo en cola vacía
+<img width="845" height="322" alt="image" src="https://github.com/user-attachments/assets/aaecb468-cd88-4e65-b56f-4424a819eda8" />
+<img width="908" height="228" alt="image" src="https://github.com/user-attachments/assets/7eaab8f2-3d06-4ff1-8183-d430271d0410" />
+
+
+Evidencia 2: Sistema FIFO al insertar más nodos. 
+<img width="821" height="311" alt="image" src="https://github.com/user-attachments/assets/3356ff43-a7ab-4299-80e5-8f6448837e4b" />
+<img width="913" height="226" alt="image" src="https://github.com/user-attachments/assets/2557af68-06e9-4f50-9c1a-882b61c27b60" />
+
+
+Evidencia 3: dequeue.
+
+<img width="600" height="278" alt="image" src="https://github.com/user-attachments/assets/6d62b4e0-54e2-46af-be1f-17a9caba2c6b" />
+
+dequeue guarda el nodo que está en frente por medio de un puntero, luego coloca un nuevo modo en el frente y luego borra el nodo al que está apuntando el puntero para liberar la memoria.
+
+<img width="911" height="228" alt="image" src="https://github.com/user-attachments/assets/84d065d5-c4a4-4d88-ae0e-adbbbb5c9a0e" />
+
+
+Evidencia 4: Control del máximo de la cola.
+<img width="833" height="306" alt="image" src="https://github.com/user-attachments/assets/1cfb618e-44ee-4c20-a08f-26b425878e9b" />
+
+De hecho, en mi código, dequeue solo se ejecuta dentro de enqueue una vez se sobrepasa el tamaño máximo.
+
+Evidencia 5: Draw
+
+<img width="592" height="289" alt="image" src="https://github.com/user-attachments/assets/53d8a4bc-ec0b-4734-a894-afe176e34a75" />
+
+Draw dibujará cada nodo en la cola hasta que se encientre con un puntero nulo.
+
+<img width="318" height="89" alt="image" src="https://github.com/user-attachments/assets/84680404-b818-45ed-92d0-53da054c4545" />
+
+Y cuando la cola esté vacía, Front será nulo, ahí deja de dibujar.
+
+<img width="910" height="228" alt="image" src="https://github.com/user-attachments/assets/00c5789a-1f77-42ce-86dc-17a2be05d02c" />
+
+
+
+Evidencia 6: Clear
+<img width="931" height="103" alt="image" src="https://github.com/user-attachments/assets/b49b1e49-c442-44a8-bceb-59d78da787d0" />
+
+al llamar clear, mientras la lista no esté vacía, llamará continuamente dequeue para limpiar la cola.
+
+<img width="913" height="224" alt="image" src="https://github.com/user-attachments/assets/3e94a0c4-b73f-4673-b6b3-784b7509e1b4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -204,4 +259,5 @@ void ofApp::keyPressed(int key) {
 
 
 ## Bitácora de reflexión
+
 
