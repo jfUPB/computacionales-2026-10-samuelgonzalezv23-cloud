@@ -645,7 +645,7 @@ aquí de hecho particle size sigue siendo cero porque no se ha ejecutado la line
 
 
 
-
+ 
 atributos cambiando (age, angle, radius)
 <img width="675" height="143" alt="image" src="https://github.com/user-attachments/assets/052afc00-aeca-45d0-a790-fa1bdf94a511" />
 <img width="1027" height="410" alt="image" src="https://github.com/user-attachments/assets/02715415-2bdc-43cd-b44f-abc6747d4940" />
