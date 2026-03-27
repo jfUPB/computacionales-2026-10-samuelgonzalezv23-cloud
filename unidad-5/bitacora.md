@@ -587,15 +587,11 @@ Muestra _vptr apuntando a la _vtable de SpiralParticle y _vtable de CircularExpl
 
 <img width="1263" height="278" alt="image" src="https://github.com/user-attachments/assets/f058ce60-2451-4643-b51e-26176e97e886" />
 
-
-3. Explicación
-
+En dos depuraciones distintas, en el mismo llamado de update, la vtable en memoria es diferente.
 Ambas tablas tienen entradas para update(), draw(), isDead(), etc.
-Sin embargo, las direcciones de update() y draw() son distintas, apuntando a implementaciones específicas de cada clase.
+Sin embargo, las direcciones de update() y draw() son distintas, apuntando a las implementaciones específicas de cada clase.
 
-4. Justificación
-
-Demuestra cómo se implementa el polimorfismo: aunque los punteros son de tipo Particle*, el despacho dinámico usa la _vtable correcta para ejecutar los métodos específicos.
+Demuestra cómo se implementa el polimorfismo, aunque los punteros son de tipo Particle*, el despacho dinámico usa la _vtable correcta para ejecutar los métodos específicos.
 
 
 ## Bitácora de reflexión
