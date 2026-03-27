@@ -633,8 +633,6 @@ Evidencia el encapsulamiento, las subclases solo pueden usar lo que la clase bas
 
 Evidencia 5 
 
-1. Elección del punto de inspección
-
 Breakpoints en:
 Creación: particles.push_back(new SpiralParticle(...))
 Update: particles[i]->update(dt)
@@ -643,7 +641,11 @@ Eliminación: delete particles[i]
 2. Captura de pantalla del depurador
 
 Etapa 1: objeto agregado al vector
+<img width="882" height="297" alt="image" src="https://github.com/user-attachments/assets/88889f9d-7c8e-402c-991b-e34e55bc0838" />
+
 Etapa 2: atributos cambiando (age, angle, radius)
+
+
 Etapa 3: objeto eliminado y vector reducido
 
 3. Explicación
