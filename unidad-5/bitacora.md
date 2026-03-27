@@ -591,7 +591,67 @@ En dos depuraciones distintas, en el mismo llamado de update, la vtable en memor
 Ambas tablas tienen entradas para update(), draw(), isDead(), etc.
 Sin embargo, las direcciones de update() y draw() son distintas, apuntando a las implementaciones específicas de cada clase.
 
-Demuestra cómo se implementa el polimorfismo, aunque los punteros son de tipo Particle*, el despacho dinámico usa la _vtable correcta para ejecutar los métodos específicos.
+
+Evidencia 3 
+
+Breakpoint en update() de OfApp:
+```
+particles[i]->update(dt);
+```
+
+genuinamente siento que la misma evidencia funciona para el 2 y el 3, corregirme si no entendí que hacer
+
+Vtable de SpiralParticle
+<img width="1263" height="278" alt="image" src="https://github.com/user-attachments/assets/4b411c5c-1a90-4caa-acc8-fdcb6401d40d" />
+
+El programa ejecuta la versión correcta de update(), no la de RisingParticle ni otra.
+El polimorfismo asegura que cada objeto se comporte según su tipo real.
+
+Evidencia de que el despacho dinámico funciona, y que el comportamiento de cada partícula depende de su tipo, no del puntero base.
 
 
+Evidencia 4
+
+Breakpoint en SpiralParticle::update().
+
+<img width="627" height="543" alt="image" src="https://github.com/user-attachments/assets/9359b7fc-fe17-4031-93d6-ed2307d097ac" />
+
+Permite ver qué campos heredados son accesibles y cuáles están ocultos.
+
+Para poder apreciar el encapsulamiento, le agregué un atributo privado y uno protegido a la clase particle, puesto que anteriormente solo tenía atributos públicos.
+<img width="510" height="264" alt="image" src="https://github.com/user-attachments/assets/6b9151e7-1978-4500-9fd7-36e7db942a0b" />
+
+
+<img width="1264" height="349" alt="image" src="https://github.com/user-attachments/assets/186d0313-3bca-48bd-ac60-e58643f3a4ec" />
+
+secreto está en la clase base pero no lo puedes modificar ni ver desde SpiralParticle, solo desde funciones de Particle.
+chisme es protected, así que sí es accesible desde la subclase.
+Los atributos propios de SpiralParticle (angle, radius, speed) son totalmente visibles en la subclase.
+
+Evidencia el encapsulamiento, las subclases solo pueden usar lo que la clase base permite, mientras que lo privado es inaccesible.
+
+
+Evidencia 5 
+
+1. Elección del punto de inspección
+
+Breakpoints en:
+Creación: particles.push_back(new SpiralParticle(...))
+Update: particles[i]->update(dt)
+Eliminación: delete particles[i]
+
+2. Captura de pantalla del depurador
+
+Etapa 1: objeto agregado al vector
+Etapa 2: atributos cambiando (age, angle, radius)
+Etapa 3: objeto eliminado y vector reducido
+
+3. Explicación
+
+Muestra la vida completa de la partícula: creación, actualización y eliminación.
+Se observa cómo age aumenta y cómo la partícula desaparece del vector cuando muere.
+
+4. Justificación
+
+Comprueba comprensión del ciclo de vida dinámico y el manejo de memoria de objetos polimórficos.
 ## Bitácora de reflexión
