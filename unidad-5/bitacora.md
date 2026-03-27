@@ -571,5 +571,31 @@ Otras variables como age heredada de particle o angulo que es propia de spiral p
 
 Demuestra cómo la herencia estructura los objetos en memoria un solo bloque contiene los campos de todas las clases base y derivadas. Permite reutilizar atributos y extender funcionalidades.
 
+Evidencia 2 
+
+Breakpoint en update() de Draw:
+```
+particles[i]->update(dt);
+```
+<img width="567" height="93" alt="image" src="https://github.com/user-attachments/assets/3d5ac053-93a0-45a4-9da7-0662b8c334db" />
+
+
+
+Muestra _vptr apuntando a la _vtable de SpiralParticle y _vtable de CircularExplosion.
+
+<img width="1259" height="279" alt="image" src="https://github.com/user-attachments/assets/b2aaa88f-c2aa-4a40-b7ce-7950034d59c4" />
+
+<img width="1263" height="278" alt="image" src="https://github.com/user-attachments/assets/f058ce60-2451-4643-b51e-26176e97e886" />
+
+
+3. Explicación
+
+Ambas tablas tienen entradas para update(), draw(), isDead(), etc.
+Sin embargo, las direcciones de update() y draw() son distintas, apuntando a implementaciones específicas de cada clase.
+
+4. Justificación
+
+Demuestra cómo se implementa el polimorfismo: aunque los punteros son de tipo Particle*, el despacho dinámico usa la _vtable correcta para ejecutar los métodos específicos.
+
 
 ## Bitácora de reflexión
