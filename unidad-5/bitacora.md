@@ -638,22 +638,53 @@ Creación: particles.push_back(new SpiralParticle(...))
 Update: particles[i]->update(dt)
 Eliminación: delete particles[i]
 
-2. Captura de pantalla del depurador
-
-Etapa 1: objeto agregado al vector
+objeto agregado al vector
 <img width="882" height="297" alt="image" src="https://github.com/user-attachments/assets/88889f9d-7c8e-402c-991b-e34e55bc0838" />
+aquí de hecho particle size sigue siendo cero porque no se ha ejecutado la linea, tras hacer un step over con f10 vemos el resultado:
+<img width="905" height="327" alt="image" src="https://github.com/user-attachments/assets/854db742-cfa2-4ee7-aefd-49df2ed2142b" />
 
-Etapa 2: atributos cambiando (age, angle, radius)
 
 
-Etapa 3: objeto eliminado y vector reducido
 
-3. Explicación
+atributos cambiando (age, angle, radius)
+<img width="675" height="143" alt="image" src="https://github.com/user-attachments/assets/052afc00-aeca-45d0-a790-fa1bdf94a511" />
+<img width="1027" height="410" alt="image" src="https://github.com/user-attachments/assets/02715415-2bdc-43cd-b44f-abc6747d4940" />
+se devuelven los valores nuevos de la partícula tras actualizar
+<img width="1025" height="613" alt="image" src="https://github.com/user-attachments/assets/ff81b4f2-df92-472e-9aad-11fc9946ded0" />
 
-Muestra la vida completa de la partícula: creación, actualización y eliminación.
+
+
+objeto eliminado
+<img width="726" height="213" alt="image" src="https://github.com/user-attachments/assets/1e945e4e-c1f0-40ce-ac60-393df7f33c08" />
+<img width="1005" height="150" alt="image" src="https://github.com/user-attachments/assets/2ad61422-ac32-45a4-8240-f42d860a8b9e" />
+<img width="1007" height="156" alt="image" src="https://github.com/user-attachments/assets/9ff8a9c7-9543-407b-b9b2-f80f96d0d45a" />
+
+Muestra la creación, actualización y eliminación.
 Se observa cómo age aumenta y cómo la partícula desaparece del vector cuando muere.
 
-4. Justificación
+Evidencia 6
 
-Comprueba comprensión del ciclo de vida dinámico y el manejo de memoria de objetos polimórficos.
+Breakpoint justo antes de delete particles[i] en ofApp::update().
+<img width="1322" height="437" alt="image" src="https://github.com/user-attachments/assets/1e03e7a7-16dc-4c5f-9aff-cd8156811ece" />
+
+Se observa el puntero del objeto en memoria.
+Tras delete y erase, ya no está en el vector ni en memoria.
+
+<img width="1316" height="536" alt="image" src="https://github.com/user-attachments/assets/5dbd54e5-d6ac-4a58-ba14-865fb8bda33e" />
+
+Confirma que la memoria se libera correctamente y que el puntero se elimina del vector.
+
+Evidencia 7 
+
+Escenario: crear 1000 partículas a la vez.
+Breakpoint en el loop que recorre el vector en ofApp::update().
+
+<img width="1292" height="388" alt="image" src="https://github.com/user-attachments/assets/6e543107-94ce-4f57-b45b-cc3581f52621" />
+
+
+Muestra el vector con gran cantidad de elementos.
+Observa eliminación de partículas en reversa sin errores.
+
+Se ve que incluso con altos numeros de partículas, la actualización y eliminación funciona correctamente.
+
 ## Bitácora de reflexión
