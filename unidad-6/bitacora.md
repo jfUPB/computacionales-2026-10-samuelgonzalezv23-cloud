@@ -408,11 +408,16 @@ Se notifica una intención ("spiral") y cada Observer reacciona de forma autóno
 
 
 #### Evidencia 4 — Decisión de diseño: Encapsulamiento en SpiralState
+
+Implementé mi propia función fastcos para no sobrecargar el programa con calculos innecesariamente precisos. para hacer funcionar la oscilación solo requería de una función periódica para que los valores oscilaran entre positivo y negativo. una aproximación de coseno es más que suficiente.
+Esta aproximación de coseno se rompe una vez los valores se vuelven altos, por esto mismo dentro de spiral update el valor del offset se resetea a aproximadamente -2 pi una vez alcanza aproximadamente 2 pi.
+
 Incluir la lógica de oscilación (fastcos y offset) exclusivamente dentro de SpiralState en lugar de en la clase base Particle.
 Breakpoint en el método SpiralState::update.
+<img width="670" height="334" alt="image" src="https://github.com/user-attachments/assets/f77cce38-d88b-4b67-aead-fee27fca5f6b" />
 
-Captura sugerida: Ventana Locals mostrando que el offset incrementa solo en este estado, mientras que en otros estados esa variable no existe o no se altera.
-
-Justificación: Se aplica el principio de Responsabilidad Única. Al no contaminar la clase Particle con variables que solo usa un movimiento específico, mantenemos la memoria de las partículas ligera (mínimo payload) y facilitamos la creación de nuevos estados sin modificar el núcleo del sistema.
+El offset incrementa solo en este estado, mientras que en otros estados esa variable no existe o no se altera.
+Se aplica el principio de Responsabilidad Única. Al no contaminar la clase Particle con variables que solo usa un movimiento específico, mantenemos la memoria de las partículas ligera (mínimo payload) y facilitamos la creación de nuevos estados sin modificar el núcleo del sistema.
+<img width="1137" height="82" alt="image" src="https://github.com/user-attachments/assets/f0ce034d-307b-4f39-8986-665ade0df5b7" />
 
 ## Bitácora de reflexión
