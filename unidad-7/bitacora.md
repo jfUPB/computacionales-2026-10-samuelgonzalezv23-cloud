@@ -203,4 +203,38 @@ int main() {
 }
 ```
 
+##### Evidencias
+
+Evidencia 1 — Contexto y carga de OpenGL
+Punto de inspección: Orden de las funciones glfwInit(), glfwMakeContextCurrent() y gladLoadGLLoader().
+
+<img width="286" height="161" alt="image" src="https://github.com/user-attachments/assets/58c1a698-1957-4927-b846-ed19fd29df8a" />
+<img width="738" height="311" alt="image" src="https://github.com/user-attachments/assets/0c3db1fa-9ddc-4d12-9410-f0abd247abd2" />
+
+GLFW es la librería encargada de gestionar la ventana y el contexto de hardware. GLAD es un cargador de punteros a funciones; su trabajo es buscar las direcciones de las funciones de OpenGL en el driver de la tarjeta de video.
+GLAD necesita saber qué contexto de OpenGL está activo para poder cargar las funciones correctas. Por esto es que GLFW debe inicializarse y crear una ventana primero. Sin un contexto actual, GLAD no tiene a donde mirar y fallará al cargar las funciones.
+
+
+Evidencia 2 — Del arreglo al shader
+Punto de inspección: Llamada a glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, ...) y su relación con layout(location = 0) in vec3 aPos.
+
+<img width="836" height="255" alt="image" src="https://github.com/user-attachments/assets/a5d84986-a6b3-4dbc-81f3-993355d31d18" />
+<img width="1161" height="84" alt="image" src="https://github.com/user-attachments/assets/9350dc5b-aec8-429e-81e9-7ec64648c612" />
+
+El arreglo de vértices reside en la RAM (C++). Al usar glBufferData, lo enviamos a la GPU. Sin embargo, la GPU no sabe qué significan esos números. glVertexAttribPointer actúa como el "mapa" que le dice al shader: "A partir del location = 0, lee grupos de 3 floats".
+El éxito de la evidencia es que el triángulo aparece en pantalla. Si el índice en C++ fuera 1 pero en el shader fuera location = 0, el pipeline no encontraría datos para aPos y no se dibujaría nada, confirmando que esta conexión es el puente vital entre los datos crudos y el procesamiento gráfico.
+
+Evidencia 3 — Uniform y cambio visual
+Punto de inspección: Uso de glUniform2f para mover el triángulo y glUniform3f para el color.
+<img width="924" height="299" alt="image" src="https://github.com/user-attachments/assets/2e66b0c1-7f35-401e-91f1-8eec80356e43" />
+
+<img width="1144" height="131" alt="image" src="https://github.com/user-attachments/assets/f7107eee-cef6-4225-9d19-b46fe4ea7487" />
+<img width="1155" height="123" alt="image" src="https://github.com/user-attachments/assets/41250b33-e30c-40b2-8ca5-369ad8d02869" />
+
+
+
+Explicación: El VBO contiene la geometría "base" (forma del triángulo). El uniform es una variable global en el shader que aplicamos después de leer los vértices pero antes de proyectarlos.
+
+Justificación: Es posible porque el pipeline de OpenGL permite aplicar transformaciones matemáticas en tiempo real. Esto es mucho más eficiente que modificar el VBO (que requeriría reenviar datos de la CPU a la GPU cada frame, saturando el bus de datos). El uniform cambia el estado del dibujo, no la definición del objeto.
+
 ## Bitácora de reflexión
