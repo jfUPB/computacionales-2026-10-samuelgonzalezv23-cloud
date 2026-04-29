@@ -231,10 +231,22 @@ Punto de inspección: Uso de glUniform2f para mover el triángulo y glUniform3f 
 <img width="1144" height="131" alt="image" src="https://github.com/user-attachments/assets/f7107eee-cef6-4225-9d19-b46fe4ea7487" />
 <img width="1155" height="123" alt="image" src="https://github.com/user-attachments/assets/41250b33-e30c-40b2-8ca5-369ad8d02869" />
 
+El VBO contiene la forma del triángulo. El uniform es una variable global en el shader que aplicamos después de leer los vértices pero antes de proyectarlos.
+El pipeline de OpenGL permite aplicar transformaciones matemáticas en tiempo real. Esto es mucho más eficiente que modificar el VBO (que requeriría reenviar datos de la CPU a la GPU cada frame, saturando el bus de datos). El uniform cambia el estado del dibujo, no la definición del objeto.
 
+Evidencia 4 — Prueba de borde (Test de Location)
+Cambiar layout(location = 0) por layout(location = 5) en el Vertex Shader.
+<img width="815" height="389" alt="image" src="https://github.com/user-attachments/assets/524ed338-c522-4531-a760-6e2fb4612290" />
+<img width="1013" height="766" alt="image" src="https://github.com/user-attachments/assets/0436c0ba-2f40-4fb5-9273-376357b0499c" />
 
-Explicación: El VBO contiene la geometría "base" (forma del triángulo). El uniform es una variable global en el shader que aplicamos después de leer los vértices pero antes de proyectarlos.
+El triángulo desaparece por completo. La pantalla queda en negro. 
+Las "locations" son direcciones estrictas. Si el código C++ envía datos al "puerto 0" pero el Shader los espera en el "puerto 5", la información se pierde en el pipeline. La comunicación entre CPU y GPU es por índices, no por nombres de variables.
 
-Justificación: Es posible porque el pipeline de OpenGL permite aplicar transformaciones matemáticas en tiempo real. Esto es mucho más eficiente que modificar el VBO (que requeriría reenviar datos de la CPU a la GPU cada frame, saturando el bus de datos). El uniform cambia el estado del dibujo, no la definición del objeto.
+Evidencia 5 — Responsabilidad del pipeline
+Decisión técnica: Realizar el cálculo de la colisión y el rebote en C++ en lugar de hacerlo dentro del Vertex Shader.
+
+Captura: (Captura del bloque if (posX > curWidth ...) en el main).
+
+Justificación: El cálculo de colisiones es una decisión de lógica de negocio o física, no de representación visual pura. Si hiciéramos el rebote en el Shader, la CPU no tendría conocimiento de dónde está el triángulo (porque el Shader no devuelve datos fácilmente). Al hacerlo en C++, podemos usar esa posición para otras cosas (sonidos, lógica de juego, interfaz) y solo enviamos el resultado final a la GPU mediante el uniform para que ella se encargue únicamente de "pintar". Esto respeta la separación de responsabilidades: CPU para lógica, GPU para renderizado masivo.
 
 ## Bitácora de reflexión
