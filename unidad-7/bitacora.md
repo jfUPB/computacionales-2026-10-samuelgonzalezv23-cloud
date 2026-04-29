@@ -243,10 +243,10 @@ El triángulo desaparece por completo. La pantalla queda en negro.
 Las "locations" son direcciones estrictas. Si el código C++ envía datos al "puerto 0" pero el Shader los espera en el "puerto 5", la información se pierde en el pipeline. La comunicación entre CPU y GPU es por índices, no por nombres de variables.
 
 Evidencia 5 — Responsabilidad del pipeline
-Decisión técnica: Realizar el cálculo de la colisión y el rebote en C++ en lugar de hacerlo dentro del Vertex Shader.
+Realizar el cálculo de la colisión y el rebote en C++ en lugar de hacerlo dentro del Vertex Shader?
 
 Captura: (Captura del bloque if (posX > curWidth ...) en el main).
 
-Justificación: El cálculo de colisiones es una decisión de lógica de negocio o física, no de representación visual pura. Si hiciéramos el rebote en el Shader, la CPU no tendría conocimiento de dónde está el triángulo (porque el Shader no devuelve datos fácilmente). Al hacerlo en C++, podemos usar esa posición para otras cosas (sonidos, lógica de juego, interfaz) y solo enviamos el resultado final a la GPU mediante el uniform para que ella se encargue únicamente de "pintar". Esto respeta la separación de responsabilidades: CPU para lógica, GPU para renderizado masivo.
+El cálculo de colisiones es una decisión física, no de representación visual. Si hiciéramos el rebote en el Shader, la CPU no sabría dónde está el triángulo. Al hacerlo en C++, podemos usar esa posición para otras cosas y enviamos el resultado final a la GPU mediante un uniform para que ella se encargue únicamente de pintar. Separación de responsabilidades: CPU para lógica, GPU para renderizado.
 
 ## Bitácora de reflexión
